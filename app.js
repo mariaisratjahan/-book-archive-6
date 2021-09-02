@@ -3,8 +3,7 @@ const cardContainer=document.getElementById('card-container');
 const error=document.getElementById('error');
 const totalSearchItems=document.getElementById('length');
 
-const searchFeild=()=>{
-   
+const searchFeild=()=>{   
     const searchInputFeildValue=serchInputFeild.value ;
     totalSearchItems.textContent="";
     if(searchInputFeildValue === ''){
@@ -14,21 +13,22 @@ const searchFeild=()=>{
     }
     else{
         error.innerText='';
+        url=`https://openlibrary.org/search.json?q=${searchInputFeildValue}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => searchResult(data))
         totalSearchItems.style.display="block";
     }
     // clear
-    cardContainer.textContent="";
+    cardContainer.textContent="";   
+  
    
-    url=`https://openlibrary.org/search.json?q=${searchInputFeildValue}`;
-    fetch(url)
-    .then(res => res.json())
-    .then(data => searchResult(data))
 }
-
 const searchResult=(result)=>{
     console.log(result);
-    const bookKeeper=result.docs;
-    totalSearchItems.innerHTML=`<h2>${bookKeeper.length} results found!</h2>`;
+    const bookKeeper=result.docs;   
+    totalSearchItems.innerHTML=`<h2 class="search-result">(Total ${bookKeeper.length} results found)</h2>`;
+    
     console.log(bookKeeper);
     bookKeeper.forEach(keep =>{
         console.log(keep);
@@ -49,4 +49,5 @@ const searchResult=(result)=>{
         cardContainer.appendChild(div);
 
     });
+    serchInputFeild.value="";
 }
