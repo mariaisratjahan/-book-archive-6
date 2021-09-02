@@ -38,9 +38,9 @@ const searchResult=(result)=>{
             <div class="card h-100">
                 <img src="https://covers.openlibrary.org/b/id/${keep.cover_i}-M.jpg" class="img-fluid card-img-top" alt="...">
              <div class="card-body">
-                <h3 class="card-title">${keep.title}</h3>
-                <h5 class="card-text">Author : <small>${keep.author_name}</small></h5>
-                <p><small>Published by : ${keep.publisher}</small></p>
+                <h3 class="card-title card-title-style">${keep.title}</h3>
+                <h5 class="orange-color card-text">Author : <small>${keep.author_name}</small></h5>
+                <p><span class="orange-color>Published by :</span> <small>${keep.publisher}</small></p>
                 <p><small class="text-muted">First published year : ${keep?.first_publish_year}</small></p>
              </div>
                 
